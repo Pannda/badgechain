@@ -305,3 +305,272 @@ Validators using the TypeValidation method match the schema indicated by the val
     - A hash string preceded by a dollar sign (“$”) and the algorithm used to generate the hash. For example: **sha256$28d50415252ab6c689a54413da15b083034b66e5** represents the result of calculating a SHA256 hash on the string “mayze”. For more information, see [how to hash & salt in various languages](https://github.com/mozilla/openbadges/wiki/How-to-hash-&-salt-in-various-languages.).
 - <span id="verification-type">VerificationType
     - Type of verification. Can be either “hosted” or “signed”.
+
+#### Data Type Definitions
+
+- JSON-LD Context
+    - Description
+    A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.
+    - Definition
+    ```json
+    {
+      "JsonLdContext": {
+        "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+        "oneOf": [
+          {"type": "string"},
+          {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {"type": "string"},
+                {"type": "object"},
+                {"type": "array"}
+              ]
+            }
+          }
+        ]
+      }
+    }
+    ```
+
+- JSON-LD Type
+    - Description
+    A type or an array of types.
+    - Definition
+    ```json
+    {
+      "JsonLdType": {
+        "description": "A type of an array of types.",
+        "oneOf": [
+          {"type": "string"},
+          {
+            "type": "array",
+            "items": {
+              {"type": "string"}
+            }
+          }
+        ]
+      }
+    }
+    ```
+
+- Image Data URL
+    - Description
+    - Definition
+    ```json
+    {
+      "ImageDataUrl": {
+        "type": "string",
+        "pattern": "^data:"
+      }
+    }
+    ```
+
+- Badge Image
+    - Description
+    An image representative of the entity
+    - Definition
+    ```json
+    {
+      "BadgeImage": {
+        "description": "An image representative of the entity",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/ImageDataUrl"
+          },
+          {
+            "type": "string",
+            "format": "uri"
+          }
+        ]
+      }
+    }
+    ```
+
+- ISO Date Time
+    - Description
+    ISO 8601 date format string yyyy-MM-dd'T'HH:mm:ss.SSS with optional .SSS milliseconds
+    - Definition
+    ```json
+    {
+      "ISODateTime": {
+        "description": "ISO 8601 date format string yyyy-MM-dd'T'HH:mm:ss.SSS with optional .SSS milliseconds",
+        "type": "string",
+        "pattern": "^\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d(:[0-5]\\d)?([\\.,]\\d{1,3})?(Z|[+-][0-2]\\d(:?[0-5]\\d)?)?)?$"
+      }
+    }
+    ```
+
+- UNIX Time Stamp
+    - Description
+    10-digit UNIX timestamp, epoch time
+    - Definition
+    ```json
+    {
+      "UNIXTimeStamp": {
+            "description": "10-digit UNIX timestamp, epoch time",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9999999999
+        }
+    }
+    ```
+
+- DateTime
+    - Description
+    A DateTime index
+    - Definition
+    ```json
+    {
+      "DateTime": {
+        "anyOf": [
+          {"$ref": "#/definitions/ISODateTime"},
+          {"$ref": "#/definitions/UNIXTimeStamp"}
+        ]
+      }
+    }
+    ```
+
+- IdentityType
+    - Description
+    The type of identity
+    - Definition
+    ```json
+    {
+      "IdentityType": {
+        "type": "string",
+        "enum": [
+          "email"
+        ]
+      }
+    }
+    ```
+
+- HashString
+    - Description
+    The type of hash string
+    - Definition
+    ```json
+    {
+      "HashString": {
+            "allOf": [
+                {"type": "string"}
+            ],
+            "oneOf": [
+                {
+                    "title": "Open Badges SHA-1 Hash",
+                    "pattern": "^sha1\\$[a-fA-F0-9]{40}$"
+                },
+                {
+                    "title": "Open Badges SHA-256 Hash",
+                    "pattern": "^sha256\\$[a-fA-F0-9]{64}$"
+                }
+            ]
+        }
+    }
+    ```
+
+- Assertion Object
+    - Description
+    Badge Assertion Object
+    - Definition
+    ```json
+    {
+      "AssertionObject": {
+        "title": "Badge Assertion Object",
+        "type": "object",
+        "properties": {
+          "@context": {"$ref": "#/definitions/JsonLdContext"},
+          "type": {"$ref": "#/definitions/JsonLdType"},
+          "id": {"type": "string", "format": "uri"},
+          "uid": {"type": "string"},
+          "recipient": {"$ref": "#/definitions/IdentityObject"},
+          "badge": {"type": "string", "format": "uri"},
+          "verify": {"$ref": "#/definitions/VerificationObject"},
+          "issuedOn": {"$ref": "#/definitions/DateTime"},
+          "evidence": {"type": "string", "format": "uri"},
+          "expires": {"$ref": "#/definitions/DateTime"}
+        }
+        "required": [
+          "@context", "type", "uid", "recipient", "badge", "verify", "issuedOn"
+        ],
+        "additionalProperties": true
+      }
+    }
+    ```
+
+- Identity Object
+    - Description
+    Badge Identity Object
+    - Definition
+    ```json
+    {
+      "IdentityObject": {
+            "title": "Badge Identity Object",
+            "type": "object",
+            "properties": {
+                "identity": {
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/HashString"
+                        },
+                        {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    ]
+                },
+                "type": {
+                    "$ref": "#/definitions/IdentityType"
+                },
+                "hashed": {
+                    "type": "boolean"
+                },
+                "salt": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "identity",
+                "type",
+                "hashed"
+            ]
+        }
+    }
+    ```
+
+- Verification Object
+    - Description
+    Badge Verification Object
+    - Definition
+    ```json
+    {
+      "VerificationObject": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "title": "VerificationType",
+                    "type": "string",
+                    "enum": [
+                        "hosted",
+                        "signed"
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            },
+            "required": [
+                "type"
+            ]
+        }
+    }
+    ```
+
+- Type
+    - Description
+    - Definition
+    ```json
+
+    ```
