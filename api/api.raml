@@ -1,2 +1,40 @@
-#% RAML 0.8
+#%RAML 0.8
+title: BadgeChain
+version: 1.0
+baseUri: localhost:3000
 
+schemas:
+  - assertion: !include schemas/assertion.json
+  - badge-class: !include schemas/badge-class.json
+  - issuer-organization: !include schemas/issuer-organization.json
+  
+resourceTypes:
+  - Assertion:
+      !include resource-types/assertion.raml
+  - Assertions:
+      !include resource-types/assertions.raml
+  - BadgeClass:
+      !include resource-types/badge-class.raml
+  - BadgeClasses:
+      !include resource-types/badge-classes.raml
+  - IssuerOrganization:
+      !include resource-types/issuer-organization.raml
+  - IssuerOrganizations:
+      !include resource-types/issuer-organizations.raml
+      
+traits:
+  - paginate:
+      !include traits/paginate.raml
+
+/issuers:
+  type: IssuerOrganizations
+  /{id}:
+    type: IssuerOrganization
+    /badges:
+      type: BadgeClasses
+      /{id}:
+        type: BadgeClass
+        /assertions:
+          type: Assertions
+          /{uid}:
+            type: Assertion

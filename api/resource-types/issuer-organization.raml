@@ -1,0 +1,38 @@
+get:
+  description:
+  responses:
+    200:
+      body:
+          application/json:
+            schema: issuer-organization
+            example: !include /examples/issuer-organization/get/200.json
+    404:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/get/404.json
+put:
+  description:
+  responses:
+    200:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/put/200.json
+    404:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/put/404.json
+    409:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/put/409.json
+delete:
+  description:
+  responses:
+    200:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/delete/200.json
+    404:
+      body:
+          application/json:
+            example: !include /examples/issuer-organization/delete/404.json
