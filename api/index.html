@@ -1,0 +1,1327 @@
+<!DOCTYPE HTML><html><head><title>BadgeChain API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 2.4.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>BadgeChain API documentation <small>version 1.0</small></h1><p>http://localhost:3000</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="issuers" class="panel-title">/issuers</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers"><span class="parent"></span>/issuers</a> <span class="methods"><a href="#issuers_get"><span class="badge badge_get">get</span></a> <a href="#issuers_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_issuers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns a list of all Issuer Organizations.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Added a new Issuer Organization</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/issuers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns a list of all Issuer Organizations.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers_get_request" data-toggle="tab">Request</a></li><li><a href="#issuers_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers_get_request"><h3>Query Parameters</h3><ul><li><strong>Page</strong>: <em>(number - default: 1)</em><p>The page of the results to return.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>Count</strong>: <em>(number - default: 10)</em><p>The number of results per page.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li></ul></div><div class="tab-pane" id="issuers_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1 Open Badges Issuer",
+  "description": "The 1.1-compliant Open Badges Issuer definition file is a JSON-LD enabled version of the 1.0 version.",
+  "type": "object",
+  "definitions": {
+    "JsonLdContext": {
+        "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": { "oneOf": 
+                  [   
+                    { "type": "string" },
+                    { "type": "object" },
+                    { "type": "array" }
+                  ]
+                }
+            }
+        ]
+    },
+    "JsonLdType": {
+        "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;issuerorg&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;issuerorg&#39;",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        ]
+    },
+    "ImageDataUrl": {
+      "type": "string",
+      "pattern": "^data:"
+    },
+    "BadgeImage": {
+      "description": "An image representative of the entity",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ImageDataUrl"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "@context": { "$ref": "#/definitions/JsonLdContext" },
+    "type": { "$ref": "#/definitions/JsonLdType" },
+    "id": { "type": "string", "format": "uri" },
+    "name": {
+      "description": "Human-readable name of the issuing entity",
+      "type": "string"
+    },
+    "url": {
+      "description": "The URL of the issuer&#39;s website or homepage",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the issuing organization"
+    },
+    "image": {
+      "$ref": "#/definitions/BadgeImage"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "revocationList": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  },
+  { ... },
+  { ... }
+]</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/issuers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Added a new Issuer Organization</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "created",
+  "issuer-organization": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "URL invalid",
+      "field": "url",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An Issuer Organization with that ID already exists."
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers__id_"><span class="parent">/issuers</span>/{id}</a> <span class="methods"><a href="#issuers__id__get"><span class="badge badge_get">get</span></a> <a href="#issuers__id__put"><span class="badge badge_put">put</span></a> <a href="#issuers__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_issuers__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns an Issuer Organization by ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Updates an Issuer Organization by ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Deletes an Issuer Organization by ID.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/issuers</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns an Issuer Organization by ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__get_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1 Open Badges Issuer",
+  "description": "The 1.1-compliant Open Badges Issuer definition file is a JSON-LD enabled version of the 1.0 version.",
+  "type": "object",
+  "definitions": {
+    "JsonLdContext": {
+        "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": { "oneOf": 
+                  [   
+                    { "type": "string" },
+                    { "type": "object" },
+                    { "type": "array" }
+                  ]
+                }
+            }
+        ]
+    },
+    "JsonLdType": {
+        "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;issuerorg&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;issuerorg&#39;",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        ]
+    },
+    "ImageDataUrl": {
+      "type": "string",
+      "pattern": "^data:"
+    },
+    "BadgeImage": {
+      "description": "An image representative of the entity",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ImageDataUrl"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "@context": { "$ref": "#/definitions/JsonLdContext" },
+    "type": { "$ref": "#/definitions/JsonLdType" },
+    "id": { "type": "string", "format": "uri" },
+    "name": {
+      "description": "Human-readable name of the issuing entity",
+      "type": "string"
+    },
+    "url": {
+      "description": "The URL of the issuer&#39;s website or homepage",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the issuing organization"
+    },
+    "image": {
+      "$ref": "#/definitions/BadgeImage"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "revocationList": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "issuer-organization": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find Issuer Organization field: `id`, value: &lt;attempted-id&gt;"
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/issuers</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Updates an Issuer Organization by ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__put_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "updated",
+  "issuer-organization": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "URL invalid",
+      "field": "url",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An Issuer Organization with that ID already exists."
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/issuers</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes an Issuer Organization by ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "deleted",
+  "issuer-organization": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    "id": "https://example.org/organization.json",
+    "name": "An Example Badge Issuer",
+    "image": "https://example.org/logo.png",
+    "url": "https://example.org",
+    "email": "steved@example.org",
+    "revocationList": "https://example.org/revoked.json"
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find Issuer Organization field: `id`, value: &lt;attempted-id&gt;"
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers__id__badges"><span class="parent">/issuers/{id}</span>/badges</a> <span class="methods"><a href="#issuers__id__badges_get"><span class="badge badge_get">get</span></a> <a href="#issuers__id__badges_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_issuers__id__badges" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers__id__badges_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns a list of all BadgeClass.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Added a new BadgeClass</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/issuers/{id}</span>/badges</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns a list of all BadgeClass.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges_get_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges_get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>Page</strong>: <em>(number - default: 1)</em><p>The page of the results to return.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>Count</strong>: <em>(number - default: 10)</em><p>The number of results per page.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li></ul></div><div class="tab-pane" id="issuers__id__badges_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1-compliant Badge Class with linked Issuer",
+  "description": "The 1.1 OBI specification mandates that a hosted Badge Class be a valid JSON-LD object with linked Issuer",
+  "type": "object",
+  "definitions": {
+    "JsonLdContext": {
+      "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "type": "string" },
+              { "type": "object" },
+              { "type": "array" }
+            ]
+          }
+        }
+      ]
+    },
+    "JsonLdType": {
+      "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;badgeclass&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;badgeclass&#39;",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "ImageDataUrl": {
+      "type": "string",
+      "pattern": "^data:"
+    },
+    "BadgeImage": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ImageDataUrl"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    },
+    "AlignmentObject": {
+      "description": "Each object in an alignment array is an object that describes a particular standard or standard element and provides an appropriate link",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "url"
+      ]
+    },
+    "AlignmentArray": {
+      "description": "List of objects describing which educational standards this badge aligns to, if any, and linking to the appropriate standard.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AlignmentObject"
+      }
+    },
+    "TagsArray": {
+      "description": "An array of strings. TagsArray is not a controlled vocabulary; it&#39;s a folksonomy",
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueness": true
+    }
+  },
+  "properties": {
+    "@context": { "$ref": "#/definitions/JsonLdContext" },
+    "type": { "$ref": "#/definitions/JsonLdType" },
+    "id": { "type": "string", "format": "uri" },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "$ref": "#/definitions/BadgeImage"
+    },
+    "criteria": {
+      "type": "string",
+      "format": "uri"
+    },
+    "issuer": {
+      "type": "string",
+      "format": "uri"
+    },
+    "alignment": {
+      "$ref": "#/definitions/AlignmentArray"
+    },
+    "tags": {
+      "$ref": "#/definitions/TagsArray"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "image",
+    "criteria",
+    "issuer"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  },
+  { ... },
+  { ... }
+]</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/issuers/{id}</span>/badges</h4></div><div class="modal-body"><div class="alert alert-info"><p>Added a new BadgeClass</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges_post_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges_post_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "created",
+  "badge-class": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "Issuer URL invalid",
+      "field": "issuer",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An Assertion with that UID already exists.",
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]   
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers__id__badges__id_"><span class="parent">/issuers/{id}/badges</span>/{id}</a> <span class="methods"><a href="#issuers__id__badges__id__get"><span class="badge badge_get">get</span></a> <a href="#issuers__id__badges__id__put"><span class="badge badge_put">put</span></a> <a href="#issuers__id__badges__id__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_issuers__id__badges__id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers__id__badges__id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the a BadgeClass with the appropriate ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges__id__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Updates a BadgeClasses of the given ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges__id__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Deletes a BadgeClasses with the given ID.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/issuers/{id}/badges</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the a BadgeClass with the appropriate ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__get_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1 Open Badges Issuer",
+  "description": "The 1.1-compliant Open Badges Issuer definition file is a JSON-LD enabled version of the 1.0 version.",
+  "type": "object",
+  "definitions": {
+    "JsonLdContext": {
+        "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": { "oneOf": 
+                  [   
+                    { "type": "string" },
+                    { "type": "object" },
+                    { "type": "array" }
+                  ]
+                }
+            }
+        ]
+    },
+    "JsonLdType": {
+        "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;issuerorg&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;issuerorg&#39;",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        ]
+    },
+    "ImageDataUrl": {
+      "type": "string",
+      "pattern": "^data:"
+    },
+    "BadgeImage": {
+      "description": "An image representative of the entity",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ImageDataUrl"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "@context": { "$ref": "#/definitions/JsonLdContext" },
+    "type": { "$ref": "#/definitions/JsonLdType" },
+    "id": { "type": "string", "format": "uri" },
+    "name": {
+      "description": "Human-readable name of the issuing entity",
+      "type": "string"
+    },
+    "url": {
+      "description": "The URL of the issuer&#39;s website or homepage",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the issuing organization"
+    },
+    "image": {
+      "$ref": "#/definitions/BadgeImage"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "revocationList": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "badge-class": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find BadgeClass field: `id`, value: &lt;attempted-id&gt;"
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/issuers/{id}/badges</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Updates a BadgeClasses of the given ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__put_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "updated",
+  "badge-class": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "Issuer URL invalid",
+      "field": "issuer",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An BadgeClass with that ID already exists.",
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/issuers/{id}/badges</span>/{id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes a BadgeClasses with the given ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__delete_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "deleted",
+  "badge-class": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "BadgeClass",
+    "id": "https://example.org/robotics-badge.json",
+    "name": "Awesome Robotics Badge",
+    "description": "For doing awesome things with robots that people think is pretty great.",
+    "image": "https://example.org/robotics-badge.png",
+    "criteria": "https://example.org/robotics-badge.html",
+    "tags": ["robots", "awesome"],
+    "issuer": "https://example.org/organization.json",
+    "alignment": [
+      { "name": "CCSS.ELA-Literacy.RST.11-12.3",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/3",
+        "description": "Follow precisely a complex multistep procedure when 
+        carrying out experiments, taking measurements, or performing technical 
+        tasks; analyze the specific results based on explanations in the text."
+      },
+      { "name": "CCSS.ELA-Literacy.RST.11-12.9",
+        "url": "http://www.corestandards.org/ELA-Literacy/RST/11-12/9",
+        "description": " Synthesize information from a range of sources (e.g.,
+        texts, experiments, simulations) into a coherent understanding of a
+        process, phenomenon, or concept, resolving conflicting information when
+        possible."
+      }
+    ]
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find BadgeClass field: `id`, value: &lt;attempted-id&gt;"
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers__id__badges__id__assertions"><span class="parent">/issuers/{id}/badges/{id}</span>/assertions</a> <span class="methods"><a href="#issuers__id__badges__id__assertions_get"><span class="badge badge_get">get</span></a> <a href="#issuers__id__badges__id__assertions_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_issuers__id__badges__id__assertions" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers__id__badges__id__assertions_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns a list of all Assertions.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges__id__assertions_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Added a new Assertion</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__assertions_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/issuers/{id}/badges/{id}</span>/assertions</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns a list of all Assertions.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__assertions_get_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__assertions_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__assertions_get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul><h3>Query Parameters</h3><ul><li><strong>Page</strong>: <em>(number - default: 1)</em><p>The page of the results to return.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li><li><strong>Count</strong>: <em>(number - default: 10)</em><p>The number of results per page.</p><p><strong>Example</strong>:</p><pre><code>1</code></pre></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__assertions_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1-compliant assertion w/linked Badge Class",
+  "description": "The 1.1 OBI specification mandates that the baked assertion be an object with linked Badge Class and that JSON-LD context and type declarations be present",
+  "type": "object",
+  "definitions": {
+      "JsonLdContext": {
+          "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+          "oneOf": [
+              {
+                  "type": "string"
+              },
+              {
+                  "type": "array",
+                  "items": { "oneOf": 
+                    [   
+                      { "type": "string" },
+                      { "type": "object" },
+                      { "type": "array" }
+                    ]
+                  }
+              }
+          ]
+      },
+      "JsonLdType": {
+          "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;assertion&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;assertion&#39;",
+          "oneOf": [
+              {
+                  "type": "string"
+              },
+              {
+                  "type": "array",
+                  "items": {
+                      "type": "string"
+                  }
+              }
+          ]
+      },
+      "ISODateTime": {
+          "description": "ISO 8601 date format string yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS with optional .SSS milliseconds",
+          "type": "string",
+          "pattern": "^\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d(:[0-5]\\d)?([\\.,]\\d{1,3})?(Z|[+-][0-2]\\d(:?[0-5]\\d)?)?)?$"
+      },
+      "UNIXTimeStamp": {
+          "description": "10-digit UNIX timestamp, epoch time",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9999999999
+      },
+      "DateTime": {
+          "anyOf": [
+              {
+                  "$ref": "#/definitions/ISODateTime"
+              },
+              {
+                  "$ref": "#/definitions/UNIXTimeStamp"
+              }
+          ]
+      },
+      "IdentityType": {
+          "type": "string",
+          "enum": [
+              "email"
+          ]
+      },
+      "HashString": {
+          "allOf": [
+              {
+                  "type": "string"
+              }
+          ],
+          "oneOf": [
+              {
+                  "title": "Open Badges SHA-1 Hash",
+                  "pattern": "^sha1\\$[a-fA-F0-9]{40}$"
+              },
+              {
+                  "title": "Open Badges SHA-256 Hash",
+                  "pattern": "^sha256\\$[a-fA-F0-9]{64}$"
+              }
+          ]
+      },
+      "IdentityObject": {
+          "title": "Badge Identity Object",
+          "type": "object",
+          "properties": {
+              "identity": {
+                  "oneOf": [
+                      {
+                          "$ref": "#/definitions/HashString"
+                      },
+                      {
+                          "type": "string",
+                          "format": "email"
+                      }
+                  ]
+              },
+              "type": {
+                  "$ref": "#/definitions/IdentityType"
+              },
+              "hashed": {
+                  "type": "boolean"
+              },
+              "salt": {
+                  "type": "string"
+              }
+          },
+          "required": [
+              "identity",
+              "type",
+              "hashed"
+          ]
+      },
+      "VerificationObject": {
+          "type": "object",
+          "properties": {
+              "type": {
+                  "title": "VerificationType",
+                  "type": "string",
+                  "enum": [
+                      "hosted",
+                      "signed"
+                  ]
+              },
+              "url": {
+                  "type": "string",
+                  "format": "uri"
+              }
+          },
+          "required": [
+              "type"
+          ]
+      }
+  },
+  "properties": {
+      "@context": { "$ref": "#/definitions/JsonLdContext" },
+      "type": { "$ref": "#/definitions/JsonLdType" },
+      "id": { "type": "string", "format": "uri" },
+      "uid": {
+          "type": "string"
+      },
+      "recipient": {
+          "$ref": "#/definitions/IdentityObject"
+      },
+      "badge": {
+          "type": "string",
+          "format": "uri"
+      },
+      "verify": {
+          "$ref": "#/definitions/VerificationObject"
+      },
+      "issuedOn": {
+          "$ref": "#/definitions/DateTime"
+      },
+      "evidence": {
+          "type": "string",
+          "format": "uri"
+      },
+      "expires": {
+          "$ref": "#/definitions/DateTime"
+      }
+  },
+  "required": [
+      "@context", "type", "uid", "recipient", "badge", "verify", "issuedOn"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>[
+  {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  },
+  { ... },
+  { ... }
+]</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__assertions_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/issuers/{id}/badges/{id}</span>/assertions</h4></div><div class="modal-body"><div class="alert alert-info"><p>Added a new Assertion</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__assertions_post_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__assertions_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__assertions_post_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__assertions_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "created",
+  "assertion": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "Badge URL invalid",
+      "field": "badge",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An Assertion with that UID already exists.",
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_issuers__id__badges__id__assertions__uid_"><span class="parent">/issuers/{id}/badges/{id}/assertions</span>/{uid}</a> <span class="methods"><a href="#issuers__id__badges__id__assertions__uid__get"><span class="badge badge_get">get</span></a> <a href="#issuers__id__badges__id__assertions__uid__put"><span class="badge badge_put">put</span></a> <a href="#issuers__id__badges__id__assertions__uid__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_issuers__id__badges__id__assertions__uid_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#issuers__id__badges__id__assertions__uid__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Returns the an Assertion with the appropriate ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges__id__assertions__uid__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Updates a Assertion of the given ID.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#issuers__id__badges__id__assertions__uid__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"><p>Deletes an Assertion with the given ID.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__assertions__uid__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/issuers/{id}/badges/{id}/assertions</span>/{uid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Returns the an Assertion with the appropriate ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__assertions__uid__get_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__assertions__uid__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__assertions__uid__get_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li><li><strong>uid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__assertions__uid__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "1.1 Open Badges Issuer",
+  "description": "The 1.1-compliant Open Badges Issuer definition file is a JSON-LD enabled version of the 1.0 version.",
+  "type": "object",
+  "definitions": {
+    "JsonLdContext": {
+        "description": "A link to a valid JSON-LD context file, that maps term names to contexts. Open Badges contexts may also define JSON-schema to validate Badge Objects against. In an Open Badges Object, this will almost always be a string:uri to a single context file, but might rarely be an array of links or context objects instead. This schema also allows direct mapping of terms to IRIs by using an object as an option within an array.",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": { "oneOf": 
+                  [   
+                    { "type": "string" },
+                    { "type": "object" },
+                    { "type": "array" }
+                  ]
+                }
+            }
+        ]
+    },
+    "JsonLdType": {
+        "description": "A type or an array of types that the badge object represents. The first or only item should be &#39;issuerorg&#39;, and any others should each be an IRI (usually a URL) corresponding to a definition of the type itself. In almost all cases, an assertion will only have one type: &#39;issuerorg&#39;",
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        ]
+    },
+    "ImageDataUrl": {
+      "type": "string",
+      "pattern": "^data:"
+    },
+    "BadgeImage": {
+      "description": "An image representative of the entity",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/ImageDataUrl"
+        },
+        {
+          "type": "string",
+          "format": "uri"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "@context": { "$ref": "#/definitions/JsonLdContext" },
+    "type": { "$ref": "#/definitions/JsonLdType" },
+    "id": { "type": "string", "format": "uri" },
+    "name": {
+      "description": "Human-readable name of the issuing entity",
+      "type": "string"
+    },
+    "url": {
+      "description": "The URL of the issuer&#39;s website or homepage",
+      "type": "string",
+      "format": "uri"
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the issuing organization"
+    },
+    "image": {
+      "$ref": "#/definitions/BadgeImage"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "revocationList": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ],
+  "additionalProperties": true
+}</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "assertion": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find Assertion field: `id`, value: &lt;attempted-id&gt;"
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__assertions__uid__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/issuers/{id}/badges/{id}/assertions</span>/{uid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Updates a Assertion of the given ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__assertions__uid__put_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__assertions__uid__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__assertions__uid__put_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li><li><strong>uid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__assertions__uid__put_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "updated",
+  "assertion": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "Badge URL invalid",
+      "field": "badge",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/409" target="_blank">409</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceConflict",
+  "error": "An Assertion with that UID already exists."
+  "details": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="issuers__id__badges__id__assertions__uid__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/issuers/{id}/badges/{id}/assertions</span>/{uid}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Deletes an Assertion with the given ID.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#issuers__id__badges__id__assertions__uid__delete_request" data-toggle="tab">Request</a></li><li><a href="#issuers__id__badges__id__assertions__uid__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="issuers__id__badges__id__assertions__uid__delete_request"><h3>URI Parameters</h3><ul><li><strong>id</strong>: <em>required (string)</em></li><li><strong>id</strong>: <em>required (string)</em></li><li><strong>uid</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="issuers__id__badges__id__assertions__uid__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "status": "deleted",
+  "assertion": {
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Assertion",
+    "id": "https://example.org/beths-robotics-badge.json",
+    "uid": "f2c20",
+    "recipient": {
+      "type": "email",
+      "hashed": true,
+      "salt": "deadsea",
+      "identity": "sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5"
+    },
+    "image": "https://example.org/beths-robot-badge.png",
+    "evidence": "https://example.org/beths-robot-work.html",
+    "issuedOn": 1359217910,
+    "expires": 1609458300,
+    "badge": "https://example.org/robotics-badge.json",
+    "verify": {
+      "type": "hosted",
+      "url": "https://example.org/beths-robotics-badge.json"
+    }
+  }
+}</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Example</strong>:</p><pre><code>{
+  "code": "ResourceNotFound",
+  "message": "Could not find Assertion field: `uid`, value: &lt;attempted-uid&gt;"
+}</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#issuers">/issuers</a></li></ul></div></div></div></div></body></html>
