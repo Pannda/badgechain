@@ -13,7 +13,7 @@ title: BadgeChain Project Blog
 		
 			<span>{{ post.date | date_to_string }}</span>
 			&nbsp;>>&nbsp;
-			<a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+			<a href="{{ post.url | site.github.url }}" title="{{ post.title }}">{{ post.title }}</a>
 
 		</li>
 
