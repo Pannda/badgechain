@@ -1,5 +1,4 @@
 # BadgeChain API documentation version 1.0
----
 
 ## /issuers
 
