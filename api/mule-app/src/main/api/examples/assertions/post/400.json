@@ -1,0 +1,13 @@
+{
+  "code": "ValidationError",
+  "message": "Could not validate required fields",
+  "details": [
+    {
+      "message": "Badge URL invalid",
+      "field": "badge",
+      "value": "..."
+    },
+    { ... },
+    { ... }
+  ]
+}

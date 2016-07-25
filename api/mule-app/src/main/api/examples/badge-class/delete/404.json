@@ -1,0 +1,4 @@
+{
+  "code": "ResourceNotFound",
+  "message": "Could not find BadgeClass field: `id`, value: <attempted-id>"
+}
