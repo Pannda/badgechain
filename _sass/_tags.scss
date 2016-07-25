@@ -1,0 +1,52 @@
+@import 'configuration-vars';
+
+html {
+  font-family: 'Open Sans', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.09375rem;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  line-height: 1.42857143;
+  color: #333333;
+  background-color: #ffffff;
+}
+h1 {
+
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 3.5rem;
+
+}
+p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  color: $ut-color-burnt-orange;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: $ut-color-purple;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+figure {
+  margin: 0;
+}
+img {
+  vertical-align: middle;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+}
