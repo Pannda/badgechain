@@ -1,4 +1,0 @@
-{
-  "code": "ResourceNotFound",
-  "message": "Could not find Assertion field: `uid`, value: <attempted-uid>"
-}
