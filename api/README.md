@@ -34,7 +34,7 @@
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
 
-##### /accounts/{eth-hash}/public
+
 
 
 ## /accounts
