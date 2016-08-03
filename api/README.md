@@ -12,7 +12,7 @@
 
 #### Create Criteria for Badge
 
-![create-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsinstructor-create-criteria.svg)
+![create-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/instructor-create-criteria.svg)
 
 ### Student
 
@@ -20,7 +20,7 @@
 
 > As a student, I want to be able to view modules that will challenge me to develop a particular skillset so I can earn badges and credit.
 
-![view-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsstudent-get-badge-criteria.svg)
+![view-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-get-badge-criteria.svg)
 
 #### Recieve Badge
 
@@ -32,13 +32,13 @@
 
 > As a student, I want to be able to view my badges and create specific views of those badges.
 
-![view-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsstudent-view-badges.svg)
+![view-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-view-badges.svg)
 
 #### Display Badges to Interest Parties
 
 > As a student, I want to provide my badge to an employer so I can enhance my resume.
 
-![student-publish-badges](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsstudent-display-public.svg)
+![student-publish-badges](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-display-public.svg)
 
 ### Employer
 
@@ -46,7 +46,7 @@
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
 
-![employer-view-public](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsstudent-display-public.svg)
+![employer-view-public](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-display-public.svg)
 
 
 
