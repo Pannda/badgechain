@@ -34,8 +34,6 @@
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
 
-![Show Badge to Employer](https://utls.github.io/badgechain/downloads/Screen Shot 2016-08-03 at 8.15.05 AM.png)
-
 
 ## /accounts
 
