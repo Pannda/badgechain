@@ -1,0 +1,222 @@
+#%RAML 1.0 Library
+types:
+  JsonLdContext:
+    type: string | (string | object | array)[]
+  JsonLdType:
+    type: string | string[]
+  ISODateTime:
+    type: string
+    pattern: ^\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d(:[0-5]\\d)?([\\.,]\\d{1,3})?(Z|[+-][0-2]\\d(:?[0-5]\\d)?)?)?$
+  UNIXTimeStamp:
+    type: integer
+    minimum: 0
+    maximum: 9999999999
+  DateTime:
+    type: ISODateTime | UNIXTimeStamp
+  IdentityType:
+    type: string
+    enum: ["email"]
+  SHA1:
+    type: string
+    pattern: ^sha1\\$[a-fA-F0-9]{40}$
+  SHA256:
+    type: string
+    pattern: ^sha256\\$[a-fA-F0-9]{64}$
+  HashString:
+    type: SHA1 | SHA256
+  EmailString:
+    type: string
+    pattern: ^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$
+  URIString:
+    type: string
+  ImageDataURLString:
+    type: string
+    pattern: "^data:"
+  BadgeImage:
+    type: ImageDataURLString | URIString
+  AlignmentObject:
+    type: object
+    properties:
+      name:
+        type: string
+        required: true
+      url:
+        type: URIString
+      description:
+        type: string
+        required: false
+  IdentityObject:
+    type: object
+    properties:
+      identity:
+        type: string | HashString
+        required: true
+      type:
+        type: IdentityType
+        required: true
+      hashed:
+        type: boolean
+        required: true
+      salt:
+        type: string
+        required: false
+  VerificationObject:
+    type: object
+    properties:
+      type:
+        type: string
+        required: true
+        enum: ["hosted", "signed"]
+      url:
+        type: URIString
+        required: false
+  Assertion:
+    type: object
+    properties:
+      "@context":
+        type: JsonLdContext
+        required: true
+      "type":
+        type: JsonLdType
+        required: true
+      id:
+        type: URIString
+        required: false
+      uid:
+        type: string
+        required: true
+      recipient:
+        type: IdentityObject
+        required: true
+      badge:
+        type: URIString
+        required: true
+      verify:
+        type: VerificationObject
+        required: true
+      issuedOn:
+        type: DateTime
+        required: true
+      evidence:
+        type: URIString
+        required: true
+      expires:
+        type: DateTime
+        required: false
+    additionalProperties: true
+    example:
+      "@context": https://w3id.org/openbadges/v1
+      type: Assertion
+      id: https://example.org/beths-robotics-badge.json
+      uid: f2c20
+      recipient:
+        type: email
+        hashed: true
+        salt: deadsea
+        identity: sha256$c7ef86405ba71b85acd8e2e95166c4b111448089f2e1599f42fe1bba46e865c5
+      image: https://example.org/beths-robot-badge.png
+      evidence: https://example.org/beths-robot-work.html
+      issuedOn: 1359217910
+      expires: 1609458300
+      badge: https://example.org/robotics-badge.json
+      verify:
+        type: hosted
+        url: https://example.org/beths-robotics-badge.json
+  Assertions:
+    type: Assertion[]
+  BadgeClass:
+    type: object
+    properties:
+      "@context":
+        type: JsonLdContext
+        required: true
+      "type":
+        type: JsonLdType
+        required: true
+      name:
+        type: string
+        required: false
+      description:
+        type: string
+        required: true
+      image:
+        type: BadgeImage
+        required: true
+      criteria:
+        type: URIString
+        required: true
+      issuer:
+        type: URIString
+        required: true
+      alignment:
+        type: AlignmentObject[]
+        uniqueItems: false
+        required: false
+      tags:
+        type: string[]
+        uniqueItems: true
+        required: false
+    additionalProperties: true
+    example:
+      "@context": https://w3id.org/openbadges/v1
+      type: BadgeClass
+      id: https://example.org/robotics-badge.json
+      name: Awesome Robotics Badge
+      description: For doing awesome things with robots that people think is pretty great.
+      image: https://example.org/robotics-badge.png
+      criteria: https://example.org/robotics-badge.html
+      issuer: https://example.org/organization.json
+      alignment:
+        -
+          name: CCSS.ELA-Literacy.RST.11-12.3
+          url: http://www.corestandards.org/ELA-Literacy/RST/11-12/3
+          description: They did all the things
+        -
+          name: Some other class
+          url: http://www.corestandards.org/some-other-class
+          description: They did all the things.
+      tags: ["robots", "awesome"]
+  BadgeClasses:
+    type: BadgeClass[]
+  IssuerOrganization:
+    type: object
+    properties:
+      "@context":
+        type: JsonLdContext
+        required: true
+      "type":
+        type: JsonLdType
+        required: true
+      id:
+        type: URIString
+        required: false
+      name:
+        type: string
+        required: true
+      url:
+        type: URIString
+        required: true
+      description:
+        type: string
+        required: false
+      image:
+        type: BadgeImage
+        required: false
+      email:
+        type: EmailString
+        required: false
+      revocationList:
+        type: URIString
+        required: false
+    additionalProperties: true
+    example:
+      "@context": https://w3id.org/openbadges/v1
+      type: Issuer
+      id: https://example.org/organization.json
+      name: An Example Badge Issuer
+      image: https://example.org/logo.png
+      url: https://example.org
+      email: steved@example.org
+      revocationList: https://example.org/revoked.json
+  IssuerOrganizations:
+    type: IssuerOrganization[]
