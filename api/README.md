@@ -1,8 +1,40 @@
 # BadgeChain API documentation version 1.0
 
-## Use Cases
+## User Stories and their Appropriate API Call
 
+### Institution
 
+#### Create Accounts for student and instructor on Ethereum
+
+### Instructor
+
+#### Create Criteria for Badge
+
+### Student
+
+#### View Badge Criteria
+
+> As a student, I want to be able to view modules that will challenge me to develop a particular skillset so I can earn badges and credit.
+
+#### Recieve Badge
+
+> As a student, I want to receive a badge so I can document and show that I have learned a skill.
+
+#### View All Previously Earned Badges
+
+> As a student, I want to be able to view my badges and create specific views of those badges.
+
+#### Display Badges to Interest Parties
+
+> As a student, I want to provide my badge to an employer so I can enhance my resume.
+
+### Employer
+
+#### Validate Badges Presented by Prespective Employee (Student)
+
+> As an employer, I want to be able to consider student badges in hiring decisions.
+
+##### /accounts/{eth-hash}/public
 
 
 ## /accounts
@@ -17,6 +49,10 @@
 * **get**: Returns an Account by the given Ethereum Account Hash.
 * **put**: Updates an Account by the given Ethereum Account Hash.
 * **delete**: Deletes an Account by the given Ethereum Account Hash.
+ 
+### /accounts/{eth-hash}/public
+
+* **get**: Returns all of the Badges accociated with the given account that the account owner has elected to be shown publicly.
 
 ## /issuers
 
