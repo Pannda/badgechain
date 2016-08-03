@@ -7,14 +7,14 @@ uses:
   OpenBadges: libraries/OpenBadgesv1.1/openbadges.raml
 
 types:
-  EthereumSHA3Hash:
+  BlockchainHash:
     type: string
     pattern: ^0x\\$[a-fA-F0-9]{64}$
   Account:
     type: object
     properties:
       accountHash:
-        type: EthereumSHA3Hash
+        type: BlockchainHash
 
 
 /issuer:
@@ -370,7 +370,7 @@ types:
               error: There is an Account with that accountHash already.
               details:
                 type: Account
-  /{eth-hash}:
+  /{acc-hash}:
     get:
       description: Returns a given Account by accountHash.
       queryParameters:
@@ -393,7 +393,7 @@ types:
             application/json:
               example:
                 code: ResourceNotFound
-                message: "Could not find an Account with field: 'accountHash', value: {eth-hash}"
+                message: "Could not find an Account with field: 'accountHash', value: {acc-hash}"
     put:
       description: Updates a given Account by its accountHash.
       responses:
