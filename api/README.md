@@ -4,7 +4,9 @@
 
 ### Institution
 
-#### Create Accounts for student and instructor on Ethereum
+#### Create Accounts for student and instructor on Blockchain Platform
+
+![diagram](https://utls.github.io/badgechain/downloads/test.diagram.svg)
 
 ### Instructor
 
