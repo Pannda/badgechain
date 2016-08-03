@@ -6,11 +6,13 @@
 
 #### Create Accounts for student and instructor on Blockchain Platform
 
-![diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/institution-create-accounts.svg)
+![create-account-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/institution-create-accounts.svg)
 
 ### Instructor
 
 #### Create Criteria for Badge
+
+![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/instructor-create-criteria.svg)
 
 ### Student
 
@@ -18,23 +20,32 @@
 
 > As a student, I want to be able to view modules that will challenge me to develop a particular skillset so I can earn badges and credit.
 
+![view-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-get-badge-criteria.svg)
+
 #### Recieve Badge
 
 > As a student, I want to receive a badge so I can document and show that I have learned a skill.
+
+![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-retrieve-badge.svg)
 
 #### View All Previously Earned Badges
 
 > As a student, I want to be able to view my badges and create specific views of those badges.
 
+![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-view-badges.svg)
+
 #### Display Badges to Interest Parties
 
 > As a student, I want to provide my badge to an employer so I can enhance my resume.
+
+![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-display-public.svg)
 
 ### Employer
 
 #### Validate Badges Presented by Prespective Employee (Student)
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
+
 
 
 ## /accounts
