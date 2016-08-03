@@ -6,7 +6,7 @@
 
 #### Create Accounts for student and instructor on Blockchain Platform
 
-![diagram](https://utls.github.io/badgechain/downloads/institution-create-accounts.svg)
+![diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/institution-create-accounts.svg)
 
 ### Instructor
 
