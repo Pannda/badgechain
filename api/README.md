@@ -26,25 +26,27 @@
 
 > As a student, I want to receive a badge so I can document and show that I have learned a skill.
 
-![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-retrieve-badge.svg)
+![retrieve-badges-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-retrieve-badge.svg)
 
 #### View All Previously Earned Badges
 
 > As a student, I want to be able to view my badges and create specific views of those badges.
 
-![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-view-badges.svg)
+![view-badges-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-view-badges.svg)
 
 #### Display Badges to Interest Parties
 
 > As a student, I want to provide my badge to an employer so I can enhance my resume.
 
-![create-criteria-diagram](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-display-public.svg)
+![student-publish-badges](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-display-public.svg)
 
 ### Employer
 
 #### Validate Badges Presented by Prespective Employee (Student)
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
+
+![employer-view-public](https://github.com/utls/badgechain/tree/gh-pages/downloads/api-flow-diagrams/svgs/student-display-public.svg)
 
 
 
