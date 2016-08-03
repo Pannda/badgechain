@@ -1,11 +1,29 @@
 # BadgeChain API documentation version 1.0
 
+## Use Cases
+
+
+
+
+## /accounts
+
+### /accounts
+
+* **get**: Returns a collection of all Accounts.
+* **post**: Added a new Issuer Organization
+
+### /accounts/{eth-hash}
+
+* **get**: Returns an Account by the given Ethereum Account Hash.
+* **put**: Updates an Account by the given Ethereum Account Hash.
+* **delete**: Deletes an Account by the given Ethereum Account Hash.
+
 ## /issuers
 
 ### /issuers
 
-* **get**: Returns a list of all Issuer Organizations.
-* **post**: Added a new Issuer Organization
+* **get**: Returns a collection of all IssuerOrganizations.
+* **post**: Added a new IssuerOrganization
 
 ### /issuers/{id}
 
@@ -15,7 +33,7 @@
 
 ### /issuers/{id}/badges
 
-* **get**: Returns a list of all BadgeClasses belonging to the given IssuerOrganization ID.
+* **get**: Returns a collection of all BadgeClasses belonging to the given IssuerOrganization ID.
 * **post**: Added a new BadgeClass associated with the given IssuerOrganization ID.
 
 ### /issuers/{id}/badges/{id}
