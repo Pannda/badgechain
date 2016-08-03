@@ -6,13 +6,13 @@
 
 #### Create Accounts for student and instructor on Blockchain Platform
 
-![create-account-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/institution-create-accounts.svg)
+![create-account-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/institution-create-accounts.png)
 
 ### Instructor
 
 #### Create Criteria for Badge
 
-![create-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/instructor-create-criteria.svg)
+![create-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/instructor-create-criteria.png)
 
 ### Student
 
@@ -20,25 +20,25 @@
 
 > As a student, I want to be able to view modules that will challenge me to develop a particular skillset so I can earn badges and credit.
 
-![view-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-get-badge-criteria.svg)
+![view-criteria-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/student-get-badge-criteria.png)
 
 #### Recieve Badge
 
 > As a student, I want to receive a badge so I can document and show that I have learned a skill.
 
-![retrieve-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgsstudent-retrieve-badge.svg)
+![retrieve-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/student-retrieve-badge.png)
 
 #### View All Previously Earned Badges
 
 > As a student, I want to be able to view my badges and create specific views of those badges.
 
-![view-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-view-badges.svg)
+![view-badges-diagram](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/student-view-badges.png)
 
 #### Display Badges to Interest Parties
 
 > As a student, I want to provide my badge to an employer so I can enhance my resume.
 
-![student-publish-badges](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-display-public.svg)
+![student-publish-badges](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/student-display-public.png)
 
 ### Employer
 
@@ -46,7 +46,7 @@
 
 > As an employer, I want to be able to consider student badges in hiring decisions.
 
-![employer-view-public](https://utls.github.io/badgechain/downloads/api-flow-diagrams/svgs/student-display-public.svg)
+![employer-view-public](https://utls.github.io/badgechain/downloads/api-flow-diagrams/pngs/student-display-public.png)
 
 
 
