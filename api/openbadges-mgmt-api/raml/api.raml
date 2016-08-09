@@ -1,0 +1,445 @@
+#%RAML 1.0
+title: BadgeChain
+version: v1
+baseUri: http://api.samplehost.com
+
+uses:
+  OpenBadges: libraries/OpenBadgesv1.1/openbadges.raml
+
+types:
+  BlockchainHash:
+    type: string
+    pattern: ^0x\\$[a-fA-F0-9]{64}$
+  Account:
+    type: object
+    properties:
+      accountHash:
+        type: BlockchainHash
+
+
+/issuer:
+  get:
+    description: Returns a collection of all IssuerOrganizations.
+    responses:
+      200:
+        body:
+          application/json:
+            type: OpenBadges.IssuerOrganizations
+  post:
+    description: Creates a new IssuerOrganization.
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              status: created
+              details:
+                type: OpenBadges.IssuerOrganization
+      400:
+        body:
+          application/json:
+            example:
+              code: ValidationError
+              message: Could not validate required fields.
+              details:
+                -
+                  message: Bad value for '@context' field
+                  field: "@context"
+                  value: ...
+                -
+                  message: ...
+                  field: ...
+                  value: ...
+      409:
+        body:
+          application/json:
+            example:
+              code: ResourceConflict
+              error: There is an IssuerOrganization with that id already.
+              details:
+                type: OpenBadges.IssuerOrganization
+  /{id}:
+    get:
+      description: Returns a given IssuerOrganization by its id.
+      responses:
+        200:
+          body:
+            application/json:
+              type: OpenBadges.IssuerOrganization
+        404:
+          body:
+            application/json:
+              example:
+                code: ResourceNotFound
+                message: "Could not find an IssuerOrganization with field: 'id', value: {id}"
+    put:
+      description: Updates a given IssuerOrganization by its id.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                status: updated
+                IssuerOrganization:
+                  type: OpenBadges.IssuerOrganization
+        404:
+          body:
+            application/json:
+              example:
+                code: ValidationError
+                message: Could not validate required fields.
+                details:
+                  -
+                    message: Bad value for id field
+                    field: id
+                    value: ...
+                  -
+                    message: ...
+                    field: ...
+                    value: ...
+        409:
+          body:
+            application/json:
+              example:
+                code: ResourceConflict
+                error: There is an IssuerOrganization with that id already.
+                details:
+                  type: OpenBadges.IssuerOrganization
+    delete:
+      description: Deletes a given IssuerOrganization by its id.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                status: deleted
+                IssuerOrganization:
+                  type: OpenBadges.IssuerOrganization
+        404:
+          body:
+            application/json:
+              example:
+                code: ResourceNotFound
+                message: An IssuerOrganization with that id could not be found.
+    /badges:
+      get:
+        description: Returns a collection of all BadgeClasses associated with the given IssuerOrganization.
+        responses:
+          200:
+            body:
+              application/json:
+                type: OpenBadges.BadgeClasses
+      post:
+        description: Creates a new BadgeClass in the given IssuerOrganization.
+        responses:
+          201:
+            body:
+              application/json:
+                example:
+                  status: created
+                  details:
+                    type: OpenBadges.BadgeClass
+          400:
+            body:
+              application/json:
+                example:
+                  code: ValidationError
+                  message: Could not validate required fields.
+                  details:
+                    -
+                      message: Bad value for '@context' field
+                      field: "@context"
+                      value: ...
+                    -
+                      message: ...
+                      field: ...
+                      value: ...
+          409:
+            body:
+              application/json:
+                example:
+                  code: ResourceConflict
+                  error: There is an BadgeClass with that id already.
+                  details:
+                    type: OpenBadges.BadgeClass
+      /{id}:
+        get:
+          description: Returns a given BadgeClass from the given IssuerOrganization.
+          responses:
+            200:
+              body:
+                application/json:
+                  type: OpenBadges.BadgeClass
+            404:
+              body:
+                application/json:
+                  example:
+                    code: ResourceNotFound
+                    message: "Could not find a BadgeClass with field: 'id', value: {id}"
+        put:
+          description: Updates a given BadgeClass by its id.
+          responses:
+            200:
+              body:
+                application/json:
+                  example:
+                    status: updated
+                    BadgeCla:
+                      type: OpenBadges.BadgeClass
+            404:
+              body:
+                application/json:
+                  example:
+                    code: ValidationError
+                    message: Could not validate required fields.
+                    details:
+                      -
+                        message: Bad value for id field
+                        field: id
+                        value: ...
+                      -
+                        message: ...
+                        field: ...
+                        value: ...
+            409:
+              body:
+                application/json:
+                  example:
+                    code: ResourceConflict
+                    error: There is BadgeClass with that id already.
+                    details:
+                      type: OpenBadges.BadgeClass
+        delete:
+          description: Deletes a given BadgeClass by its id.
+          responses:
+            200:
+              body:
+                application/json:
+                  example:
+                    status: deleted
+                    BadgeClass:
+                      type: OpenBadges.BadgeClass
+            404:
+              body:
+                application/json:
+                  example:
+                    code: ResourceNotFound
+                    message: A BadgeClass with that id could not be found.
+        /assertions:
+          get:
+            description: Returns a collection of all Assertions for the given BadgeClass in the given IssuerOrganization.
+            responses:
+              200:
+                body:
+                  application/json:
+                    type: OpenBadges.Assertions
+          post:
+            description: Creates a new Assertion.
+            responses:
+              201:
+                body:
+                  application/json:
+                    example:
+                      status: created
+                      details:
+                        type: OpenBadges.Assertion
+              400:
+                body:
+                  application/json:
+                    example:
+                      code: ValidationError
+                      message: Could not validate required fields.
+                      details:
+                        -
+                          message: Bad value for '@context' field
+                          field: "@context"
+                          value: ...
+                        -
+                          message: ...
+                          field: ...
+                          value: ...
+              409:
+                body:
+                  application/json:
+                    example:
+                      code: ResourceConflict
+                      error: There is an Assertion with that uid already.
+                      details:
+                        type: OpenBadges.Assertion
+          /{uid}:
+            get:
+              description: Returns a given Assertion for the given BadgeClass from the given IssuerOrganization.
+              responses:
+                200:
+                  body:
+                    application/json:
+                      type: OpenBadges.Assertion
+                404:
+                  body:
+                    application/json:
+                      example:
+                        code: ResourceNotFound
+                        message: "Could not find an Assertion with field: 'uid', value: {uid}"
+            put:
+              description: Updates a given Assertion by it's uid.
+              responses:
+                200:
+                  body:
+                    application/json:
+                      example:
+                        status: updated
+                        Assertion:
+                          type: OpenBadges.Assertion
+                404:
+                  body:
+                    application/json:
+                      example:
+                        code: ValidationError
+                        message: Could not validate required fields.
+                        details:
+                          -
+                            message: Bad value for uid field
+                            field: uid
+                            value: ...
+                          -
+                            message: ...
+                            field: ...
+                            value: ...
+                409:
+                  body:
+                    application/json:
+                      example:
+                        code: ResourceConflict
+                        error: There is an Assertion with that uid already.
+                        details:
+                          type: OpenBadges.Assertion
+            delete:
+              description: Deletes a given Assertion by its uid.
+              responses:
+                200:
+                  body:
+                    application/json:
+                      example:
+                        status: deleted
+                        BadgeClass:
+                          type: OpenBadges.Assertion
+                404:
+                  body:
+                    application/json:
+                      example:
+                        code: ResourceNotFound
+                        message: An Assertion with that uid could not be found.
+/accounts:
+  get:
+    description: Returns a collection of all Accounts.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Account[]
+  put:
+    description: Creates a new Account.
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              status: created
+              details:
+                type: Account
+      400:
+        body:
+          application/json:
+            example:
+              code: ValidationError
+              message: Could not validate required fields.
+              details:
+                -
+                  message: Bad value for 'accountHash' field
+                  field: accountHash
+                  value: ...
+                -
+                  message: ...
+                  field: ...
+                  value: ...
+      409:
+        body:
+          application/json:
+            example:
+              code: ResourceConflict
+              error: There is an Account with that accountHash already.
+              details:
+                type: Account
+  /{acc-hash}:
+    get:
+      description: Returns a given Account by accountHash.
+      queryParameters:
+        bake-badge:
+          type: boolean
+          description: Set equal to true if you want to recieve a baked badge image rather than JSON.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Account
+            image/svg:
+              type: string
+              description: Returns a 'baked-badge' representation of the OpenBadge as a SVG.
+            image/png:
+              type: string
+              description: Returns a 'baked-badge' representation of the OpenBadge as a PNG.
+        404:
+          body:
+            application/json:
+              example:
+                code: ResourceNotFound
+                message: "Could not find an Account with field: 'accountHash', value: {acc-hash}"
+    put:
+      description: Updates a given Account by its accountHash.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                status: updated
+                Account:
+                  type: Account
+        404:
+          body:
+            application/json:
+              example:
+                code: ValidationError
+                message: Could not validate required fields.
+                details:
+                  -
+                    message: Bad value for accountHash field
+                    field: accountHash
+                    value: ...
+                  -
+                    message: ...
+                    field: ...
+                    value: ...
+        409:
+          body:
+            application/json:
+              example:
+                code: ResourceConflict
+                error: There is an Account with that accountHash already.
+                details:
+                  type: Account
+    delete:
+      description: Deletes a given Account by its accountHash.
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                status: deleted
+                Account:
+                  type: Account
+        404:
+          body:
+            application/json:
+              example:
+                code: ResourceNotFound
+                message: An Account with that accountHash could not be found.
