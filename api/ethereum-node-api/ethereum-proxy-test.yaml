@@ -1,0 +1,910 @@
+---
+swagger: "2.0"
+info:
+  version: "2016-09-27T16:15:32Z"
+  title: "ethereum-proxy"
+host: "b6p7pddgt3.execute-api.us-east-1.amazonaws.com"
+basePath: "/test"
+schemes:
+- "https"
+paths:
+  /:
+    post:
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        type: "http"
+  /eth/accounts:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_accounts\"\
+            ,\n\t\"params\": [],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/block-number:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_blockNumber\"\
+            ,\n\t\"params\": [],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/coinbase:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_coinbase\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/gas-price:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_gasPrice\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-balance:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "address"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "block-number"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.block-number: "method.request.querystring.block-number"
+          integration.request.querystring.address: "method.request.querystring.address"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getBalance\"\
+            ,\n\t\"params\": [\"$input.params('address')\", \"$input.params('block-number')\"\
+            ],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-block-transation-count-by-hash:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "block-hash"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.block-hash: "method.request.querystring.block-hash"
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getBlockTransactionCountByHash\"\
+            ,\n\t\"params\": [\"$input.params('block-hash')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-block-transation-count-by-number:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "postion"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.postion: "method.request.querystring.postion"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getBlockTransactionCountByNumber\"\
+            ,\n\t\"params\": [\"$input.params('position')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-code:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "position"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "address"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.position: "method.request.querystring.position"
+          integration.request.querystring.address: "method.request.querystring.address"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getCode\"\
+            ,\n\t\"params\": [\"$input.params('address')\", \"$input.params('position')\"\
+            ],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-storage-at:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "address"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "position"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "block-number"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.position: "method.request.querystring.position"
+          integration.request.querystring.block-number: "method.request.querystring.block-number"
+          integration.request.querystring.address: "method.request.querystring.address"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getStorageAt\"\
+            ,\n\t\"params\": [\"$input.params('address')\",\"$input.params('position')\"\
+            , \"$input.params('block-number')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-transation-count:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "position"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "address"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.position: "method.request.querystring.position"
+          integration.request.querystring.address: "method.request.querystring.address"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getTransactionCount\"\
+            ,\n\t\"params\": [\"$input.params('address')\",\"$input.param ('position')\"\
+            ],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-uncle-count-by-block-hash:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "block-hash"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.block-hash: "method.request.querystring.block-hash"
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getUncleCountByBlockHash\"\
+            ,\n\t\"params\": [\"$input.params('block-hash')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-uncle-count-by-block-number:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "position"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.position: "method.request.querystring.position"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getUncleCountByBlockNumber\"\
+            ,\n\t\"params\": [\"$input.params('position')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/get-work:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_getWork\"\
+            ,\n\t\"params\": [],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/hash-rate:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_hashrate\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/mining:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_mining\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/protocol-version:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_protocolVersion\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n    \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/send-raw-transation:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "data"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.data: "method.request.querystring.data"
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_sendRawTransaction\"\
+            ,\n\t\"params\": [\"$input.params('data')\"],\n\t\"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/send-transation:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "from"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "data"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.data: "method.request.querystring.data"
+          integration.request.querystring.from: "method.request.querystring.from"
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_sendTransaction\"\
+            ,\n\t\"params\": [\"$input.params('from')\", \"$input.params('data')\"\
+            ],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/sign:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "address"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "hash"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.hash: "method.request.querystring.hash"
+          integration.request.querystring.address: "method.request.querystring.address"
+        requestTemplates:
+          application/json: "{\n\t\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_sign\"\
+            ,\n\t\"params\": [\"$input.params('address')\", \"$input.params('hash')\"\
+            ],\n\t\"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/submit-work:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "pow-hash"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "mix-digest"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "nonce"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.pow-hash: "method.request.querystring.pow-hash"
+          integration.request.querystring.id: "method.request.querystring.id"
+          integration.request.querystring.nonce: "method.request.querystring.nonce"
+          integration.request.querystring.mix-digest: "method.request.querystring.mix-digest"
+        requestTemplates:
+          application/json: "{\n\n\t\"jsonrpc\": \"2.0\",\n\t\"method\": \"eth_submitWork\"\
+            ,\n\t\"params\": [\"$input.params('nonce')\", \"$input.params('pow-hash')\"\
+            , \"$input.params('mix-digest')\"],\n\t\"id\": $input.params('id')\n\n\
+            }"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /eth/syncing:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"eth_syncing\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /net/listening:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"net_listening\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /net/peer-count:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"net_peerCount\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n    \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /net/version:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"net_version\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /web3/client-version:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"web3_clientVersion\"\
+            ,\n    \"params\": [],\n    \"id\": $input.params('id')\n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+  /web3/sha3:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "data"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: "200"
+        requestParameters:
+          integration.request.querystring.data: "method.request.querystring.data"
+          integration.request.querystring.id: "method.request.querystring.id"
+        requestTemplates:
+          application/json: "{\n\n    \"jsonrpc\": \"2.0\",\n    \"method\": \"web3_sha3\"\
+            ,\n    \"params\": [\"$input.params('data')\"],\n    \"id\": $input.params('id')\n\
+            \n}"
+        uri: "https://ethereum.ctl.utexas.edu"
+        passthroughBehavior: "when_no_templates"
+        httpMethod: "POST"
+        type: "http"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
