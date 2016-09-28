@@ -19,7 +19,7 @@ export:
 			--parameters extensions='integrations' \
 			--accepts 'application/json' \
 			--export-type swagger \
-			${api}-$${i}.yaml; \
+			${api}-$${i}.json; \
 		${aws} apigateway get-export \
 			--rest-api-id ${id} \
 			--stage-name $${i} \
