@@ -1,0 +1,95 @@
+- name: "Phillip D. Long, Ph.D."
+  title:
+    - "Chief Innovation Officer-P2021"
+    - "Associate Vice Provost, Learning Sciences"
+  organization:
+    - "Principle Investigator"
+  email: "phil.long@austin.utexas.edu"
+  image: "../images/people/phil.jpeg"
+  slug: "phil-long"
+
+- name: "Shelby Stanfield"
+  title:
+    - "Vice Provost and Registrar"
+  organization:
+    - "Office of the Registrar"
+  email: "s.stanfield@austin.utexas.edu"
+  image: "../images/people/shelby.png"
+  slug: "shelby-stanfield"
+
+- name: "Scott Evans, Ph.D."
+  title:
+    - "Director of Longhorn Maker Studio"
+  organization:
+    - "Cockrell School of Engineering"
+  email: "scott.evans.@austin.utexas.edu"
+  image: "../images/people/evans.png"
+  slug: "scott-evans"
+
+- name: "Ladd Hanson"
+  title:
+    - "Senior Learning Technology Architect"
+  organization:
+    - "Project 2021 - Development Studio"
+  email: "ladd@austin.utexas.edu"
+  image: "../images/people/ladd.png"
+  slug: "ladd-hanson"
+
+- name: "Ofodike Ezekoye, Ph.D."
+  title:
+    - "Professor"
+  organization:
+    - "Department of Mechanical Engineering,"
+    - "Department of Civil, Architectural and"
+    - "Environmental Engineering"
+    - "Cockrell School of Engineering"
+  email: "dezekoye@mail.utexas.edu"
+  image: "../images/people/ezekoye.png"
+  slug: "ofodike-ezekoye"
+
+- name: "Carolyn Seepersad, Ph.D."
+  title:
+    - "Associate Professor"
+  organization:
+    - "Department of Mechanical Engineering"
+    - "Cockrell School of Engineering"
+  email: "ccseepersad@mail.utexas.edu"
+  image: "../images/people/seepersan.png"
+  slug: "carolyn-seepersad"
+
+- name: "Richard \"Rich\" Crawford, Ph.D."
+  title:
+    - "Professor"
+  organization:
+    - "Department of Mechanical Engineering"
+    - "Cockrell School of Engineering"
+  email: "rhc@mail.utexas.edu"
+  image: "../images/people/crawford.png"
+  slug: "rich-crawford"
+
+- name: "Guy \"Cooper\" Henson, Ph.D."
+  title:
+    - "Technical Project Manager"
+  organization:
+    - "Project 2021 - Development Studio"
+  email: "cooper.henson@austin.utexas.edu"
+  image: "../images/people/cooper.png"
+  slug: "cooper-henson"
+
+- name: "Maxwell Lincoln"
+  title:
+    - "Software Developer/Analyst"
+  organization:
+    - "Project 2021 - Development Studio"
+  email: "maxwell.lincoln@austin.utexas.edu"
+  image: "../images/people/maxwell.png"
+  slug: "maxwell-lincoln"
+
+- name: "Ann Yue"
+  title:
+    - "Student Technology Assistant"
+  organization:
+    - "Liberal Arts Instructional Technology Services (LAITS)"
+  email: "ann.yue@utexas.edu"
+  image: "../images/people/test.png"
+  slug: "ann-yue"

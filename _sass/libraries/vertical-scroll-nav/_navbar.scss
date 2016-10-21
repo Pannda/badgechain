@@ -1,0 +1,23 @@
+div.vertical-scroll-navbar-menu-container {
+
+  height: 75px;
+  overflow: auto;
+  white-space: nowrap;
+
+  a {
+
+    display: inline-block;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+
+  }
+
+  a:hover {
+
+    background-color: #777;
+
+  }
+
+}

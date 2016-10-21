@@ -1,49 +1,20 @@
 <!DOCTYPE html>
+<html class="ut-typography roboto">
 
-<html>
+  {% include head.html %}
 
-	<head>
+  <body>
 
-		<title>{{ page.title }}</title>
+    {% include header.html %}
 
-		<!-- CSS -->
+    <div class="container-custom">
 
-		<link rel="stylesheet" type="text/css" href="https://utls.github.io/badgechain/css/main.css">
+        {{ content }}
 
-		<!-- Open Sans Font -->
+    </div>
 
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    {% include footer.html %}
 
-	</head>
-
-	<body>
-
-		{% include ut-header.html %}
-
-		<div class="container">
-
-			<div class="row">
-
-				<div class="col-lg-1 col-md-1 hidden-sm hidden-sx"></div>
-
-				<div class="col-lg-10 col-md-10 hidden-12 hidden-12">
-
-					{{ content }}
-
-				</div>
-
-				<div class="col-lg-1 col-md-1 hidden-sm hidden-sx"></div>
-
-			</div>
-
-		</div>
-
-		{% include ut-footer.html %}
-
-	</body>
-
-	<footer>
-
-	</footer>
+  </body>
 
 </html>

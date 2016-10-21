@@ -1,0 +1,43 @@
+@import "color-functions";
+@import "accessibility-variables";
+@import "accessibility-functions";
+
+.ut-color {
+
+  @each $color-name, $color-hex in $ut-color-list {
+
+    &.#{$color-name} {
+
+      @each $tint-percent in $tint-percentages {
+
+        &-#{$tint-percent} {
+
+          $tint-percentage: percentage($tint-percent/100.0);
+
+            @if $tint-percentage == 100% {
+
+              background-color: $color-hex;
+
+            } @else {
+
+              background-color: tint($color-hex, 100% - $tint-percentage);
+
+            }
+
+          color: white;
+
+          &.accessibility {
+
+
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

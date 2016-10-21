@@ -1,0 +1,51 @@
+@function get-channel-percent($channel-value) {
+
+  @return ($channel-value * 1.0) / 255.0;
+
+}
+
+@function get-channel-space($channel-value) {
+
+  $sRGB: get-channel-percent($channel-value);
+
+  @if $sRGB <= 0.03928 {
+
+    @return $sRGB / 12.92;
+
+  } @else {
+
+    $base-name: ($sRGB + 0.055) / 1.055;
+
+    @return $base-name * $base-name * ($base-name * 0.4);
+
+  }
+
+}
+
+@function relative-luminance($r, $g, $b) {
+
+  $R: get-channel-space($r);
+  $G: get-channel-space($g);
+  $B: get-channel-space($b);
+
+  @return (0.2126 * $R) + (0.7152 * $G) + (0.0722 * $B)
+
+}
+
+@function get-contrast-ratio($foreground, $background) {
+
+  @if $foreground > $background {
+
+    @return $foreground / $background;
+
+  } @else if $background > $foreground {
+
+    @return $background / $foreground;
+
+  } @else {
+
+    @return 1.0;
+
+  }
+
+}

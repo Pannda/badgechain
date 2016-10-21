@@ -1,0 +1,23 @@
+{% for person in site.data.advisory %}
+
+  <div id="{{person.slug}}" class="person-container">
+
+    <div class="person-content-container ut-color blue-grey-100">
+
+      <div class="person-image" style="background-image:url('{{person.image}}')"></div>
+
+      <div class="person-name">{{person.name}}</div>
+
+      {% for affiliation in person.affiliation %}
+
+        <div class="person-title">{{affiliation}}</div>
+
+      {% endfor %}
+
+      <div class="person-organization">{{person.organization}}</div>
+
+    </div>
+
+  </div>
+
+{% endfor %}

@@ -1,13 +1,79 @@
 ---
 layout: default
-title: BadgeChain
 ---
-<div class="blurb">
 
-	<h1>Hello World!</h1>
+{% include home/hero/section-container.html %}
 
-	<p>This is the BadgeChain project website.</p>
+<div id="sections" class="sections-container">
 
-	<p>Learn more <a href="/about">about</a> us.</p>
+  <div class="section-container ut-color burnt-orange-100">
 
-</div> <!-- /.blurb -->
+    <div class="section-content-container">
+
+        {% include home/about/icon.html %}
+
+        {% include home/about/title.html %}
+
+        {% include home/about/description.html %}
+
+        {% include home/about/button.html %}
+
+    </div>
+
+  </div>
+
+  <div class="section-container ut-color blue-100">
+
+    <div class="section-content-container">
+
+      {% include home/open-badges/icon.html %}
+
+      {% include home/open-badges/title.html %}
+
+      {% include home/open-badges/description.html %}
+
+      {% include home/open-badges/button.html %}
+
+    </div>
+
+  </div>
+
+  <div class="section-container ut-color green-100">
+
+    <div class="section-content-container">
+
+      {% include home/blockchains/icon.html %}
+
+      {% include home/blockchains/title.html %}
+
+      {% include home/blockchains/description.html %}
+
+      {% include home/blockchains/button.html %}
+
+    </div>
+
+  </div>
+
+  <div class="section-container ut-color magenta-100">
+
+    <div class="section-content-container">
+
+      {% include home/makerspaces/icon.html %}
+
+      {% include home/makerspaces/title.html %}
+
+      {% include home/makerspaces/description.html %}
+
+      {% include home/makerspaces/button.html %}
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="ut-badgechain-description-container">
+
+  {% include home/description.html %}
+
+</div>

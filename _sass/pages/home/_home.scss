@@ -1,0 +1,84 @@
+.ut-badgechain-description-container {
+
+  color: white;
+  padding: 25px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+
+}
+
+.lift-logo-container {
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+
+}
+
+.lift-light-bulb {
+
+  height: 300px;
+  left: 7.5%;
+  position: absolute;
+
+}
+
+.lift-logo-header {
+
+  color: white;
+  background-color: transparent;
+  flex-basis: 100%;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 33%;
+  width: 66%;
+
+  .ut-branding-lockout {
+
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+    height: 55px;
+    width: 475px;
+    text-align: right;
+
+  }
+
+  .lift-badge-chain-logo {
+
+    font-size: 30px;
+    margin: 0;
+    width: 100%;
+
+    span {
+
+      font-weight: 100;
+      text-transform: uppercase;
+
+    }
+
+  }
+
+
+}
+
+.description-box {
+
+  color: rgba(0, 0, 0, 0.65);
+  background-color: white;
+  font-weight: 100;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 33%;
+  width: 66%;
+
+  h3 {
+
+    font-weight: 300;
+
+  }
+
+}

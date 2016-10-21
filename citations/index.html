@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="test-container">
+
+  <div class="ut-color blue-100 accessibility">Test</div>
+
+</div>
+
+
+  {% for citation in site.data.citations %}
+
+    <div id="citation-{{ citation.index }}">
+
+      <a href="{{ citation.url }}">
+
+        <span class="citation-link-text">
+
+          {{ citation.text }}
+
+        </span>
+
+      </a>
+
+    </div>
+
+  {% endfor %}

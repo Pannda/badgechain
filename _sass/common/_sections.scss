@@ -1,0 +1,115 @@
+.sections-container {
+
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+
+}
+
+.section-container {
+
+  box-sizing: border-box;
+  height: 250px;
+  margin: 0;
+  padding: 20px;
+
+}
+
+
+@media (min-width: $xs-width-min) and (max-width: $xs-width-max) {
+
+  .section-container {
+
+    width: (100 / 1) * 1%;
+
+  }
+
+}
+
+@media (min-width: $sm-width-min) and (max-width: $sm-width-max) {
+
+  .section-container {
+
+    width: (100 / 2) * 1%;
+
+  }
+
+
+}
+
+@media (min-width: $md-width-min) and (max-width: $md-width-max) {
+
+  .section-container {
+
+    width: (100 / 2) * 1%;
+
+  }
+
+
+}
+
+@media (min-width: $lg-width-min) and (max-width: $lg-width-max) {
+
+  .section-container {
+
+    width: (100 / 4) * 1%;
+
+  }
+
+  .seciton-icon-container {
+
+    margin-top: -50px;
+
+  }
+
+}
+
+.section-content-container {
+
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.seciton-icon-container {
+
+  height: 100px;
+  text-align: center;
+  width: 100px;
+
+}
+
+.section-icon {
+
+  height: 80px;
+  width: 80px;
+
+}
+
+.section-title-text {
+
+  color: white;
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  text-transform: uppercase;
+
+
+}
+
+.section-description-text {
+
+  color: white;
+  font-weight: 100;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+
+}
+
+
