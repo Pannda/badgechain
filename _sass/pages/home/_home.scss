@@ -16,68 +16,278 @@
 
 }
 
-.lift-light-bulb {
+@media (min-width: 901px) {
 
-  height: 300px;
-  left: 7.5%;
-  position: absolute;
+  .lift-light-bulb {
 
-}
-
-.lift-logo-header {
-
-  color: white;
-  background-color: transparent;
-  flex-basis: 100%;
-  font-weight: 300;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 33%;
-  width: 66%;
-
-  .ut-branding-lockout {
-
-    border-bottom: 1px solid white;
-    padding-bottom: 20px;
-    height: 55px;
-    width: 475px;
-    text-align: right;
+    height: 300px;
+    left: 7.5%;
+    position: absolute;
 
   }
 
-  .lift-badge-chain-logo {
+  .lift-logo-header {
 
-    font-size: 30px;
-    margin: 0;
-    width: 100%;
+    color: white;
+    background-color: transparent;
+    flex-basis: 100%;
+    font-weight: 300;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 33%;
+    width: 66%;
 
-    span {
+    .ut-branding-lockout {
 
-      font-weight: 100;
-      text-transform: uppercase;
+      border-bottom: 1px solid white;
+      padding-bottom: 20px;
+      height: 55px;
+      width: 475px;
+      text-align: right;
+
+    }
+
+    .lift-badge-chain-logo {
+
+      font-size: 30px;
+      margin: 0;
+      width: 100%;
+
+      span {
+
+        font-weight: 100;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+
+  }
+
+  .description-box {
+
+    color: rgba(0, 0, 0, 0.65);
+    background-color: white;
+    font-weight: 100;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 33%;
+    width: 66%;
+
+    h3 {
+
+      font-weight: 300;
 
     }
 
   }
 
+}
+
+@media (max-width: 900px) {
+
+  .lift-light-bulb {
+
+
+    display: inline-flex;
+    width: 30%;
+
+  }
+
+  .lift-logo-header {
+
+    color: white;
+    background-color: transparent;
+    flex-basis: 100%;
+    font-weight: 300;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    .ut-branding-lockout {
+
+      border-bottom: 1px solid white;
+      padding-bottom: 20px;
+      height: 55px;
+      width: 475px;
+      text-align: right;
+
+    }
+
+    .lift-badge-chain-logo {
+
+      font-size: 30px;
+      margin: 0;
+      width: 100%;
+
+      span {
+
+        font-weight: 100;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+
+  }
+
+  .description-box {
+
+    color: rgba(0, 0, 0, 0.65);
+    background-color: white;
+    font-weight: 100;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+    h3 {
+
+      font-weight: 300;
+
+    }
+
+  }
 
 }
 
-.description-box {
+@media (max-width: 600px) {
 
-  color: rgba(0, 0, 0, 0.65);
-  background-color: white;
-  font-weight: 100;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 33%;
-  width: 66%;
+  .lift-light-bulb {
 
-  h3 {
+    display: inline-flex;
+    width: 20%;
 
+  }
+
+  .lift-logo-header {
+
+    color: white;
+    background-color: transparent;
+    flex-basis: 100%;
     font-weight: 300;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    .ut-branding-lockout {
+
+      border-bottom: 1px solid white;
+      padding-bottom: 20px;
+      height: auto;
+      width: 100%;
+
+    }
+
+    .lift-badge-chain-logo {
+
+      font-size: 30px;
+      margin: 0;
+      width: 100%;
+
+      span {
+
+        font-weight: 100;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+
+  }
+
+  .description-box {
+
+    color: rgba(0, 0, 0, 0.65);
+    background-color: white;
+    font-weight: 100;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+    h3 {
+
+      font-weight: 300;
+
+    }
+
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .ut-badgechain-description-container {
+
+    padding: 0;
+    margin-top: 20px;
+
+  }
+
+  .lift-light-bulb {
+
+    display: none;
+
+  }
+
+  .lift-logo-header {
+
+    color: white;
+    background-color: transparent;
+    flex-basis: 100%;
+    font-weight: 300;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    .ut-branding-lockout {
+
+      border-bottom: 1px solid white;
+      padding-bottom: 20px;
+      height: auto;
+      width: 100%;
+
+    }
+
+    .lift-badge-chain-logo {
+
+      font-size: 30px;
+      margin: 0;
+      width: 100%;
+
+      span {
+
+        font-weight: 100;
+        text-transform: uppercase;
+
+      }
+
+    }
+
+
+  }
+
+  .description-box {
+
+    color: rgba(0, 0, 0, 0.65);
+    background-color: white;
+    font-weight: 100;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+
+    h3 {
+
+      font-weight: 300;
+
+    }
 
   }
 

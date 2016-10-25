@@ -68,7 +68,15 @@
 
   @media (max-width: 849px) {
 
+    margin: 25px 0;
+    border-radius: 0;
     flex-direction: column;
+
+  }
+
+  @media (min-width: 1000px) {
+
+    margin: 25px 10%;
 
   }
 

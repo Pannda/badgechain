@@ -39,6 +39,7 @@ h2 {
 
   background-image: url("../../images/backgrounds/badge-honeycomb.png");
   background-repeat: repeat;
+  min-height: calc(100% - 150px);
   margin-right: auto;
   margin-left: auto;
   overflow-x: hidden;
