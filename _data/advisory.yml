@@ -5,6 +5,7 @@
   email: "c.casilli@gmail.com"
   image: "../images/advisory/carla-casilli.jpeg"
   slug: "carla-casilli"
+  link: "https://medium.com/@carlacasilli"
 
 - name: "Kristen Eshleman"
   affiliation:
@@ -13,6 +14,7 @@
   email: "kreshleman@davidson.edu"
   image: "../images/advisory/kristen-eshleman.jpeg"
   slug: "kristen-eshleman"
+  link: "http://www.davidson.edu"
 
 - name: "Daniel Hickey, Ph.D."
   affiliation:
@@ -22,6 +24,7 @@
   email: "dthickey@indiana.edu"
   image: "../images/advisory/daniel-hickey.jpeg"
   slug: "daniel-hickey"
+  link: null
 
 - name: "Serge Ravet"
   affiliation:
@@ -30,3 +33,4 @@
   email: "serge.ravet@iosf.org"
   image: "../images/advisory/serge-ravet.jpeg"
   slug: "serge-ravet"
+  link: null

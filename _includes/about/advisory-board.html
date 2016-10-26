@@ -4,7 +4,15 @@
 
     <div class="person-content-container ut-color blue-grey-100">
 
-      <div class="person-image" style="background-image:url('{{person.image}}')"></div>
+      {% if person.link != null %}
+
+        <a class="person-image" href="{{ person.link }}" target="_blank" style="background-image:url('{{person.image}}')"></a>
+
+      {% else %}
+
+        <div class="person-image" style="background-image:url('{{person.image}}')"></div>
+
+      {% endif %}
 
       <div class="person-name">{{person.name}}</div>
 
