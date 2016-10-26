@@ -23,15 +23,6 @@
   image: "../images/advisory/daniel-hickey.jpeg"
   slug: "daniel-hickey"
 
-- name: "Philipp Schmidt"
-  affiliation:
-    - "Director of Learning Innovation, ML"
-    - "Learning Initiative"
-  organization: "MIT Media Lab"
-  email: "philipp@media.mit.edu"
-  image: "../images/advisory/philipp-schmidt.jpeg"
-  slug: "philipp-schmidt"
-
 - name: "Serge Ravet"
   affiliation:
     - "Innovation Director"
