@@ -1,0 +1,16 @@
+{% for person in site.data.people %}
+
+<script type="application/ld+json">
+
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "{{person.name}}",
+        {% for title in person.title %}"jobTitle": "{{title}}",  {% endfor %}
+        {% for organization in person.organization %}"affiliation": "{{organization}}",{% endfor %}
+        "worksFor": "The University of Texas at Austin"
+    }
+
+</script>
+
+{% endfor %}
